@@ -1,5 +1,9 @@
 <div class="entity-menu-item">
-  <div class="entity-menu-item-header" matRipple matRippleColor="" [ngStyle]="{'background': item.backgroundColorCss}" (click)="toggle()">
+  <div class="entity-menu-item-header"
+       matRipple
+       [matRippleColor]="'rgba(255, 255, 255, 0.1)'"
+       [ngStyle]="{'background': item.backgroundColorCss}"
+       (click)="toggle()">
     <div class="entity-menu-item-link {{item.labelClass}}">
       <a class="entity-menu-item-label" [ngStyle]="{'color': item.textColorCss}">
         <div>
@@ -15,6 +19,7 @@
       <div *ngFor="let link of item.links">
         <a (click)="navigate(link.url)"
            matRipple
+           [matRippleColor]="'rgba(255, 255, 255, 0.1)'"
            [ngStyle]="{'color': linkTextColor, 'border-color': linkTextColor}"
            [class.activated]="isActive(currentUrl, link.activatedRegex) && item.activatedClass === undefined"
            [ngClass]="isActive(currentUrl, link.activatedRegex) && item.activatedClass !== undefined ? item.activatedClass : ''">
@@ -23,6 +28,7 @@
         <div @rollInOut *ngIf="isActive(currentUrl, link.showChildrenRegex)">
           <a (click)="navigate(child.url)"
              matRipple
+             [matRippleColor]="'rgba(255, 255, 255, 0.1)'"
              [ngStyle]="{'color': linkTextColor, 'border-color': linkTextColor}"
              class="pl-5" *ngFor="let child of link?.children"
              [class.activated]="isActive(currentUrl, child.activatedRegex) && item.activatedClass === undefined"

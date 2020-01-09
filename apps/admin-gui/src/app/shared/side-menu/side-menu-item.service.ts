@@ -38,7 +38,7 @@ export class SideMenuItemService {
     return {
       label: 'MAIN_MENU.FACILITIES',
       colorClass: 'base-item-color-activated',
-      icon: 'perun-manage_facility',
+      icon: 'perun-manage-facility',
       baseLink: ['/facilities'],
       links: [],
       baseColorClass: 'base-item-color',

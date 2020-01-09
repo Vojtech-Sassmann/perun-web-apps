@@ -25,7 +25,7 @@ export class CustomIconService {
     },
     {
       url: 'assets/img/PerunWebImages/manage_facility_white.svg',
-      name: 'perun-manage_facility'
+      name: 'perun-manage-facility'
     },
     {
       url: 'assets/img/PerunWebImages/vo-white.svg',
