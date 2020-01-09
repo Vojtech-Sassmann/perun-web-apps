@@ -1,6 +1,6 @@
-<div id="nav-menu-icons">
+<div id="nav-menu-icons" [ngStyle]="{'color': navTextColor}">
   <button mat-icon-button
-          class="mr-2 text-white mt-auto mb-auto"
+          class="mr-2 mt-auto mb-auto"
           (click)="sideNav.toggle()">
     <mat-icon>
       menu
@@ -11,7 +11,7 @@
   </a>
 </div>
 
-<div id="nav-menu-user-info">
+<div id="nav-menu-user-info" [ngStyle]="{'color': navTextColor}">
   <button mat-icon-button (click)="showNotificationHistory()" [matTooltip]="'NAV.NOTIFICATIONS_TOOLTIP'|translate">
     <mat-icon matBadge="{{getNewNotificationsCount() > 5 ? '5+' : getNewNotificationsCount()}}" matBadgeColor="warn" [matBadgeHidden]="getNewNotificationsCount() === 0">
       {{getNewNotificationsCount() ? 'notifications_active' : 'notifications'}}

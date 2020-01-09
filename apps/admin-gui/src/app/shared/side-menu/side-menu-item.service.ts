@@ -4,6 +4,7 @@ import {EntityMenuLink, SideMenuItem} from './side-menu.component';
 import {AuthResolverService} from '../../core/services/common/auth-resolver.service';
 import { Facility, Group, Resource, RichMember, User, Vo } from '@perun-web-apps/perun/models';
 import { parseFullName } from '@perun-web-apps/perun/utils';
+import { StoreService } from '../../core/services/common/store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,25 @@ export class SideMenuItemService {
   constructor(
     private translate: TranslateService,
     private authResolver: AuthResolverService,
+    private store: StoreService,
   ) {
   }
+
+  baseItemColor = this.store.get('theme', 'sidemenu_bg_color');
+  voBgColor = this.store.get('theme', 'sidemenu_vo_bg_color');
+  memberBgColor = this.store.get('theme', 'sidemenu_member_bg_color');
+  groupBgColor = this.store.get('theme', 'sidemenu_group_bg_color');
+  facilityBgColor = this.store.get('theme', 'sidemenu_facility_bg_color');
+  resourceBgColor = this.store.get('theme', 'sidemenu_resource_bg_color');
+  userBgColor = this.store.get('theme', 'sidemenu_user_bg_color');
+
+  baseItemTextColor = this.store.get('theme', 'sidemenu_text_color');
+  voTextColor = this.store.get('theme', 'sidemenu_vo_text_color');
+  memberTextColor = this.store.get('theme', 'sidemenu_member_text_color');
+  groupTextColor = this.store.get('theme', 'sidemenu_group_text_color');
+  facilityTextColor = this.store.get('theme', 'sidemenu_facility_text_color');
+  resourceTextColor = this.store.get('theme', 'sidemenu_resource_text_color');
+  userTextColor = this.store.get('theme', 'sidemenu_user_text_color');
 
   getFacilitiesManagementItem(): SideMenuItem {
     return {
@@ -25,6 +43,8 @@ export class SideMenuItemService {
       links: [],
       baseColorClass: 'base-item-color',
       baseColorClassRegex: '^/facilities$',
+      backgroundColorCss: this.baseItemColor,
+      textColorCss: this.baseItemTextColor
     };
   }
 
@@ -37,6 +57,8 @@ export class SideMenuItemService {
       baseLink: ['/organizations'],
       baseColorClass: 'base-item-color',
       baseColorClassRegex: '^/organizations$',
+      backgroundColorCss: this.baseItemColor,
+      textColorCss: this.baseItemTextColor
     };
   }
 
@@ -51,6 +73,8 @@ export class SideMenuItemService {
       baseColorClassRegex: '^/profile$',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links',
+      backgroundColorCss: this.baseItemColor,
+      textColorCss: this.baseItemTextColor,
       links: [
         {
           label: 'MENU_ITEMS.USER.OVERVIEW',
@@ -100,6 +124,8 @@ export class SideMenuItemService {
       baseColorClassRegex: '^/admin$',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links',
+      backgroundColorCss: this.baseItemColor,
+      textColorCss: this.baseItemTextColor,
       links: [
         {
           label: 'MENU_ITEMS.ADMIN.OVERVIEW',
@@ -142,6 +168,8 @@ export class SideMenuItemService {
     return {
       label: facility.name,
       baseLink: [`/facilities/${facility.id}`],
+      backgroundColorCss: this.facilityBgColor,
+      textColorCss: this.facilityTextColor,
       links: [
         {
           label: 'MENU_ITEMS.FACILITY.OVERVIEW',
@@ -184,6 +212,8 @@ export class SideMenuItemService {
     return {
       label: resource.name,
       baseLink: ['/facilities', resource.facilityId, 'resources', resource.id],
+      backgroundColorCss: this.resourceBgColor,
+      textColorCss: this.resourceTextColor,
       links: [
         {
           label: 'MENU_ITEMS.RESOURCE.OVERVIEW',
@@ -221,6 +251,8 @@ export class SideMenuItemService {
     return {
       label: group.name,
       baseLink: [`/organizations/${group.voId}/groups/${group.id}`],
+      backgroundColorCss: this.groupBgColor,
+      textColorCss: this.groupTextColor,
       links: [
         {
           label: 'MENU_ITEMS.GROUP.OVERVIEW',
@@ -303,7 +335,9 @@ export class SideMenuItemService {
       icon: 'vo-white.svg',
       // labelClass: 'vo-text',
       activatedClass: 'dark-item-activated',
-      linksClass: 'dark-item-links'
+      linksClass: 'dark-item-links',
+      backgroundColorCss: this.voBgColor,
+      textColorCss: this.voTextColor,
     };
   }
 
@@ -311,6 +345,8 @@ export class SideMenuItemService {
     return {
       label: parseFullName(member.user),
       baseLink: [`/organizations/${member.voId}/members/${member.id}`],
+      backgroundColorCss: this.memberBgColor,
+      textColorCss: this.memberTextColor,
       links: [
         {
           label: 'MENU_ITEMS.MEMBER.OVERVIEW',
@@ -348,6 +384,8 @@ export class SideMenuItemService {
     return {
       label: parseFullName(user),
       baseLink: [path],
+      backgroundColorCss: this.userBgColor,
+      textColorCss: this.userTextColor,
       links: [
         {
           label: 'MENU_ITEMS.USER.OVERVIEW',

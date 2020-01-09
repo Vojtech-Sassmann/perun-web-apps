@@ -33,6 +33,8 @@ export class AppComponent implements OnInit {
 
   principal: PerunPrincipal;
   isProduction = false;
+  navBackgroundColor = this.store.get('theme', 'nav_bg_color');
+  sideBarBorderColor = this.store.get('theme', 'sidemenu_border_color');
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
