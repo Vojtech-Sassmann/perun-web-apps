@@ -25,7 +25,8 @@
 
   <mat-sidenav-content id="content-inner"
     [ngStyle]="{
-       'min-height' : getContentInnerMinHeight()
+       'min-height' : getContentInnerMinHeight(),
+       'background-color': contentBackgroundColor
     }">
     <div id="content-wrap">
       <router-outlet></router-outlet>

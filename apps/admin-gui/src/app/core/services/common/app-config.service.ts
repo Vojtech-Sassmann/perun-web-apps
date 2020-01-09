@@ -48,7 +48,7 @@ export class AppConfigService {
   loadAppInstanceConfig() : Promise<void>  {
     return new Promise((resolve, reject) => {
 
-      this.http.get('/assets/config/instanceConfig.json', { headers: this.getNoCacheHeaders() })
+      this.http.get('/assets/config/instanceConfig-not.json', { headers: this.getNoCacheHeaders() })
         .subscribe(config => {
           this.storeService.setInstanceConfig(config);
           resolve();

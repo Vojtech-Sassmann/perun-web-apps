@@ -38,7 +38,7 @@ export class SideMenuItemService {
     return {
       label: 'MAIN_MENU.FACILITIES',
       colorClass: 'base-item-color-activated',
-      icon: 'manage_facility_white.svg',
+      icon: 'perun-manage_facility',
       baseLink: ['/facilities'],
       links: [],
       baseColorClass: 'base-item-color',
@@ -52,7 +52,7 @@ export class SideMenuItemService {
     return {
       label: 'MAIN_MENU.ACCESS',
       colorClass: 'base-item-color-activated',
-      icon: 'vo-white.svg',
+      icon: 'perun-vo',
       links: [],
       baseLink: ['/organizations'],
       baseColorClass: 'base-item-color',
@@ -68,7 +68,7 @@ export class SideMenuItemService {
       expandable: false,
       label: 'MAIN_MENU.PROFILE',
       colorClass: 'base-item-color-activated',
-      icon: 'user-white.svg',
+      icon: 'perun-user',
       baseColorClass: 'base-item-color',
       baseColorClassRegex: '^/profile$',
       activatedClass: 'dark-item-activated',
@@ -119,7 +119,7 @@ export class SideMenuItemService {
       expandable: false,
       label: 'MAIN_MENU.ADMIN',
       colorClass: 'base-item-color-activated',
-      icon: 'perun_admin-white.svg',
+      icon: 'perun-perun-admin',
       baseColorClass: 'base-item-color',
       baseColorClassRegex: '^/admin$',
       activatedClass: 'dark-item-activated',
@@ -201,7 +201,7 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'facility-item',
-      icon: 'manage_facility_white.svg',
+      icon: 'perun-manage-facility',
       // labelClass: 'facility-text',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links'
@@ -240,7 +240,7 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'resource-item',
-      icon: 'manage_facility_white.svg',
+      icon: 'perun-manage-facility',
       // labelClass: 'resource-text',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links',
@@ -319,7 +319,7 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'group-item',
-      icon: 'group-white.svg',
+      icon: 'perun-group',
       // labelClass: 'group-text',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links'
@@ -332,7 +332,7 @@ export class SideMenuItemService {
       baseLink: [`/organizations/${vo.id}`],
       links: this.getVoLinks(vo),
       colorClass: 'vo-item',
-      icon: 'vo-white.svg',
+      icon: 'perun-vo',
       // labelClass: 'vo-text',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links',
@@ -373,7 +373,7 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'member-item',
-      icon: 'user-white.svg',
+      icon: 'perun-user',
       // labelClass: 'member-text',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links'
@@ -422,7 +422,7 @@ export class SideMenuItemService {
         },
       ],
       colorClass: 'user-bg-color',
-      icon: 'user-white.svg',
+      icon: 'perun-user',
       activatedClass: 'dark-item-activated',
       linksClass: 'dark-item-links'
     };

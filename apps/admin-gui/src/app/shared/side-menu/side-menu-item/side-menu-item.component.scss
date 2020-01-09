@@ -6,7 +6,7 @@
 }
 
 .side-entity-menu a {
-  padding: 8px 8px 8px 40px;
+  padding: 5px 8px 5px 40px;
   text-decoration: none;
   color: #ffffff;
   font-size: 1rem;
@@ -20,7 +20,7 @@
 }
 
 .entity-menu-item-header {
-  padding: 5px 5px 5px 25px;
+  padding: 8px 5px 8px 25px;
   cursor: pointer;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -59,4 +59,8 @@
 
 .entity-menu-item-sub-menu {
   overflow: hidden;
+}
+
+.entity-menu-item-sub-menu-item {
+  padding-left: 4rem !important;
 }

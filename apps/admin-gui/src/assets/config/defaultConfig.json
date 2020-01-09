@@ -30,8 +30,10 @@
   ],
   "log_out_enabled": true,
   "theme": {
+    "content_bg_color": "",
     "nav_bg_color": "#102027",
     "nav_text_color": "#ffffff",
+    "nav_icon_color": "#ffffff",
     "footer_bg_color": "#263238",
     "footer_headers_text_color": "#ffffff",
     "footer_links_text_color": "#e0e0e0",
@@ -39,6 +41,7 @@
     "sidemenu_bg_color": "#263238",
     "sidemenu_border_color": "#071e24",
     "sidemenu_item_links_bg_color": "#39444a",
+    "sidemenu_item_icon_color": "#ffffff",
     "sidemenu_vo_bg_color":"#283593",
     "sidemenu_member_bg_color": "#ad1457",
     "sidemenu_group_bg_color":"#33691e",
