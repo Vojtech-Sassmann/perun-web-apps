@@ -9,18 +9,27 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PerunBean } from './perunBean';
 
 
 /**
- * input to setRoleWithUserComplementaryObject
+ * input to sendInvitation
  */
-export interface SetRoleWithUserComplementaryObject { 
-    role: string;
+export interface InputSendInvitation { 
     /**
-     * List of user ids
+     * vo id
      */
-    users: Array<number>;
-    complementaryObject: PerunBean;
+    vo: number;
+    /**
+     * name of person used in invitation email (optional)
+     */
+    name?: string;
+    /**
+     * email address to send invitation to
+     */
+    email: string;
+    /**
+     * preferred language to use
+     */
+    language: string;
 }
 

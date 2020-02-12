@@ -9,18 +9,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PerunBean } from './perunBean';
+import { ApplicationFormItem } from './applicationFormItem';
 
 
-/**
- * input to setRoleWithUserComplementaryObject
- */
-export interface SetRoleWithUserComplementaryObject { 
-    role: string;
-    /**
-     * List of user ids
-     */
-    users: Array<number>;
-    complementaryObject: PerunBean;
+export interface ApplicationFormItemData { 
+    id?: number;
+    formItem?: ApplicationFormItem;
+    shortname?: string;
+    value?: string;
+    assuranceLevel?: string;
+    prefilledValue?: string;
 }
 

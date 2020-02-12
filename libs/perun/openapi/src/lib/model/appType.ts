@@ -9,18 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PerunBean } from './perunBean';
 
 
-/**
- * input to setRoleWithUserComplementaryObject
- */
-export interface SetRoleWithUserComplementaryObject { 
-    role: string;
-    /**
-     * List of user ids
-     */
-    users: Array<number>;
-    complementaryObject: PerunBean;
-}
+export type AppType = 'INITIAL' | 'EXTENSION';
+
+export const AppType = {
+    INITIAL: 'INITIAL' as AppType,
+    EXTENSION: 'EXTENSION' as AppType
+};
 

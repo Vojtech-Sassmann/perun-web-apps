@@ -9,18 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PerunBean } from './perunBean';
 
 
-/**
- * input to setRoleWithUserComplementaryObject
- */
-export interface SetRoleWithUserComplementaryObject { 
-    role: string;
-    /**
-     * List of user ids
-     */
-    users: Array<number>;
-    complementaryObject: PerunBean;
-}
+export type AppState = 'NEW' | 'VERIFIED' | 'APPROVED' | 'REJECTED';
+
+export const AppState = {
+    NEW: 'NEW' as AppState,
+    VERIFIED: 'VERIFIED' as AppState,
+    APPROVED: 'APPROVED' as AppState,
+    REJECTED: 'REJECTED' as AppState
+};
 

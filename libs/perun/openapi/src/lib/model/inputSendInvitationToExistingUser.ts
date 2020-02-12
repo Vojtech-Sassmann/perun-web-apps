@@ -9,18 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PerunBean } from './perunBean';
 
 
 /**
- * input to setRoleWithUserComplementaryObject
+ * input to sendInvitationToExistingUser
  */
-export interface SetRoleWithUserComplementaryObject { 
-    role: string;
+export interface InputSendInvitationToExistingUser { 
     /**
-     * List of user ids
+     * vo id
      */
-    users: Array<number>;
-    complementaryObject: PerunBean;
+    vo?: number;
+    /**
+     * user id
+     */
+    user?: number;
 }
 

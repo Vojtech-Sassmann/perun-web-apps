@@ -9,18 +9,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PerunBean } from './perunBean';
+import { MailType } from './mailType';
 
 
 /**
- * input to setRoleWithUserComplementaryObject
+ * input to sendMessage
  */
-export interface SetRoleWithUserComplementaryObject { 
-    role: string;
+export interface InputSendMessage { 
+    mailType: MailType;
     /**
-     * List of user ids
+     * application id
      */
-    users: Array<number>;
-    complementaryObject: PerunBean;
+    applicationId: number;
+    /**
+     * you can specify reason for case: mailType == APP_REJECTED_USER
+     */
+    reason?: string;
 }
 
