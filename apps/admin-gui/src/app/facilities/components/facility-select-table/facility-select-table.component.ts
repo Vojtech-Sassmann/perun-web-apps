@@ -27,7 +27,7 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   private sort: MatSort;
 

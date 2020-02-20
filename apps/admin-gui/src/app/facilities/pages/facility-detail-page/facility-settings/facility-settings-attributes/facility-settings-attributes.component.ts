@@ -32,7 +32,7 @@ export class FacilitySettingsAttributesComponent implements OnInit {
     this.translate.get('FACILITY_DETAIL.SETTINGS.ATTRIBUTES.SUCCESS_DELETE').subscribe(value => this.deleteSuccessMessage = value);
   }
 
-  @ViewChild('list', {static: false})
+  @ViewChild('list')
   list: AttributesListComponent;
 
   attributes: Attribute[] = [];

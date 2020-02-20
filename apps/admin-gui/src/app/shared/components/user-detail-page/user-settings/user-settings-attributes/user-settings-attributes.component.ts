@@ -32,7 +32,7 @@ export class UserSettingsAttributesComponent implements OnInit {
     this.translate.get('USER_DETAIL.SETTINGS.ATTRIBUTES.SUCCESS_DELETE').subscribe(value => this.deleteSuccessMessage = value);
   }
 
-  @ViewChild('list', {static: false})
+  @ViewChild('list')
   list: AttributesListComponent;
 
   saveSuccessMessage: string;

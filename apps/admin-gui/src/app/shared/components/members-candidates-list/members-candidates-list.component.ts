@@ -23,12 +23,12 @@ export class MembersCandidatesListComponent implements OnChanges, AfterViewInit 
 
   private sort: MatSort;
 
-  @ViewChild(MatSort, {static: false}) set matSort(ms: MatSort) {
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @Input()
   members: MemberCandidate[];

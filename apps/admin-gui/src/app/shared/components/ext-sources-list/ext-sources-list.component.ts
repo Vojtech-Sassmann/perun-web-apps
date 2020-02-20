@@ -24,7 +24,7 @@ export class ExtSourcesListComponent implements AfterViewInit, OnChanges {
   @Input()
   pageSize = 5;
 
-  @ViewChild(MatPaginator, { static: false })
+  @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {

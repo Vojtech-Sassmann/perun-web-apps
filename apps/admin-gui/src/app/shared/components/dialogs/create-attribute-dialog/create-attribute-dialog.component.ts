@@ -31,7 +31,7 @@ export class CreateAttributeDialogComponent implements OnInit {
     this.translate.get('DIALOGS.CREATE_ATTRIBUTE.SUCCESS_SAVE').subscribe(value => this.saveSuccessMessage = value);
   }
 
-  @ViewChild('list', {static: false})
+  @ViewChild('list')
   list: AttributesListComponent;
 
   attributes: Attribute[];

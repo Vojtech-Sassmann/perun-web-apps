@@ -32,7 +32,7 @@ export class VoSelectTableComponent implements OnChanges, AfterViewInit {
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   private sort: MatSort;
 

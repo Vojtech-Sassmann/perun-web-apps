@@ -22,7 +22,7 @@ export class AttributesListComponent implements OnChanges, AfterViewInit {
   @ViewChildren(AttributeValueComponent)
   items: QueryList<AttributeValueComponent>;
 
-  @ViewChild(MatPaginator, {static: false})
+  @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
   @Input()

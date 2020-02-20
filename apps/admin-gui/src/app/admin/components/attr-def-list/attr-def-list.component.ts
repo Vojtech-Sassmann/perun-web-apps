@@ -41,7 +41,7 @@ export class AttrDefListComponent implements OnChanges, AfterViewInit {
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = ['select', 'id', 'friendlyName', 'entity', 'namespace', 'type', 'unique'];
   dataSource: MatTableDataSource<AttributeDefinition>;

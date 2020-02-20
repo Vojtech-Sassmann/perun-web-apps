@@ -42,7 +42,7 @@ export class EntitylessAttributeKeysListComponent implements OnChanges, OnInit {
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @Input()
   attDef: AttributeDefinition;

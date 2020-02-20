@@ -22,7 +22,7 @@ export class MemberGroupListComponent implements OnInit, OnChanges, AfterViewIni
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @Input()
   groups: Group[] = [];

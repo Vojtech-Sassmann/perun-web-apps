@@ -54,7 +54,7 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   exporting = false;
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnChanges(changes: SimpleChanges) {
     this.hasMembersGroup = this.checkIfHasMembersGroup();

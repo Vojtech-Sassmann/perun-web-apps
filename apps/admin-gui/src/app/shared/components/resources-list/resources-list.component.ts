@@ -36,7 +36,7 @@ export class ResourcesListComponent implements AfterViewInit, OnChanges {
   @Input()
   filterValue: string;
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnChanges(changes: SimpleChanges) {
     this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));

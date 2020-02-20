@@ -41,7 +41,7 @@ export class ApplicationFormListComponent implements OnChanges {
 
   dataSource = this.applicationFormItems;
   displayedColumns: string[] = ['drag', 'shortname', 'type', 'preview', 'edit', 'delete'];
-  @ViewChild('table', { static: false }) table: MatTable<ApplicationFormItem>;
+  @ViewChild('table') table: MatTable<ApplicationFormItem>;
 
   mapForCombobox: Map<number, string> = new Map();
   dragDisabled = true;
