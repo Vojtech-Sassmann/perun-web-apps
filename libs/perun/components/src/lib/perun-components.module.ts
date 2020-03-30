@@ -35,7 +35,7 @@ import {NgxPolygloatModule, TranslateService} from "ngx-polygloat";
 @NgModule({
   imports: [
     NgxPolygloatModule.forRoot({
-      apiKey: "ml0vltfpmpaqe6mu6b3g07fc7q",
+     // apiKey: "",
       apiUrl: "https://cloud4.perun-aai.org"
     }),
     CommonModule,
