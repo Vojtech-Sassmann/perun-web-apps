@@ -30,12 +30,12 @@ import { AttributeValueComponent } from './attributes-list/attribute-value/attri
 import { AttributesListComponent } from './attributes-list/attributes-list.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import {NgxPolygloatModule} from "ngx-polygloat";
+import {NgxPolygloatModule, TranslateService} from "ngx-polygloat";
 
 @NgModule({
   imports: [
     NgxPolygloatModule.forRoot({
-      //apiKey: "",
+      apiKey: "ml0vltfpmpaqe6mu6b3g07fc7q",
       apiUrl: "https://cloud4.perun-aai.org"
     }),
     CommonModule,
@@ -86,8 +86,9 @@ import {NgxPolygloatModule} from "ngx-polygloat";
     AttributeValueBooleanComponent,
     AttributeValueListComponent,
     AttributeValueMapComponent,
-    AttributeValueStringComponent
-  ]
+    AttributeValueStringComponent,
+    NgxPolygloatModule
+  ],
 })
 export class PerunSharedComponentsModule {
   constructor() {  }

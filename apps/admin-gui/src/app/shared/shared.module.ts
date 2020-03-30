@@ -196,11 +196,7 @@ import { NgxPolygloatModule, TranslateService } from 'ngx-polygloat';
     ScrollingModule,
     UiAlertsModule,
     MatBadgeModule,
-    PerunSharedComponentsModule,
-    NgxPolygloatModule.forRoot({
-      //apiKey: "",
-      apiUrl: "https://cloud4.perun-aai.org"
-    })
+    PerunSharedComponentsModule
   ],
   exports: [
     PerunNavComponent,
