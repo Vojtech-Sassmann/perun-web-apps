@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   InitAuthService, StoreService
 } from '@perun-web-apps/perun/services';
-import { AppConfigService, ColorConfig, EntityColorConfig } from '@perun-web-apps/config';
-import { AuthzResolverService } from '@perun-web-apps/perun/openapi';
-import { MatDialog } from '@angular/material/dialog';
+import {AppConfigService, ColorConfig, EntityColorConfig} from '@perun-web-apps/config';
+import {AuthzResolverService} from '@perun-web-apps/perun/openapi';
+import {MatDialog} from '@angular/material/dialog';
 import {TranslateService} from 'ngx-polygloat';
-import { ServerDownDialogComponent } from '@perun-web-apps/general';
+import {ServerDownDialogComponent} from '@perun-web-apps/general';
 
 
 @Injectable({
@@ -21,7 +21,8 @@ export class AdminGuiConfigService {
     private authzSevice: AuthzResolverService,
     private dialog: MatDialog,
     private translate: TranslateService
-  ) {}
+  ) {
+  }
 
   entityColorConfigs: EntityColorConfig[] = [
     {
@@ -108,14 +109,15 @@ export class AdminGuiConfigService {
 
   private handlePrincipalErr(err: any) {
     console.log("sdfsdf");
-    this.translate.get('GENERAL.PRINCIPAL.ERROR.TITLE').subscribe(sdf => console.log(sdf));
-    this.dialog.open(ServerDownDialogComponent, {
-      data: {
-        title: this.translate.instant('GENERAL.PRINCIPAL_ERROR.TITLE'),
-        message: this.translate.instant('GENERAL.PRINCIPAL_ERROR.MESSAGE'),
-        action: this.translate.instant('GENERAL.PRINCIPAL_ERROR.ACTION'),
-      },
-      disableClose: true
+    this.translate.get('GENERAL.PRINCIPAL.ERROR.TITLE').subscribe(sdf => {
+      this.dialog.open(ServerDownDialogComponent, {
+        data: {
+          title: this.translate.instant('GENERAL.PRINCIPAL_ERROR.TITLE'),
+          message: this.translate.instant('GENERAL.PRINCIPAL_ERROR.MESSAGE'),
+          action: this.translate.instant('GENERAL.PRINCIPAL_ERROR.ACTION'),
+        },
+        disableClose: true
+      });
     });
     throw err;
   }

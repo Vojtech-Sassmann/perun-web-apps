@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatTableExporterModule } from 'mat-table-exporter';
-import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -31,9 +30,14 @@ import { AttributeValueComponent } from './attributes-list/attribute-value/attri
 import { AttributesListComponent } from './attributes-list/attributes-list.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {NgxPolygloatModule} from "ngx-polygloat";
 
 @NgModule({
   imports: [
+    NgxPolygloatModule.forRoot({
+      //apiKey: "",
+      apiUrl: "https://cloud4.perun-aai.org"
+    }),
     CommonModule,
     MatCheckboxModule,
     MatTableModule,
@@ -41,7 +45,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatChipsModule,
     DragDropModule,
     MatTableExporterModule,
-    TranslateModule,
     RouterModule,
     MatSortModule,
     MatPaginatorModule,
@@ -53,7 +56,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatTooltipModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
   ],
   declarations: [
     VoSelectTableComponent,
@@ -87,4 +90,5 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   ]
 })
 export class PerunSharedComponentsModule {
+  constructor() {  }
 }

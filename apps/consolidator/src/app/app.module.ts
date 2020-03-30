@@ -7,9 +7,7 @@ import { UiMaterialModule } from '@perun-web-apps/ui/material';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { IdentitiesComponent } from './components/identities/identities.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AddIdentityDialogComponent } from './components/add-identity-dialog/add-identity-dialog.component';
 import { PERUN_API_SERVICE } from '@perun-web-apps/perun/tokens';
 import { ApiService } from './services/api.service';
@@ -22,10 +20,8 @@ import { ConsolidatePageComponent } from './pages/consolidate-page/consolidate-p
 import { APP_BASE_HREF } from '@angular/common';
 import { UiAlertsModule } from '@perun-web-apps/ui/alerts';
 import { ConsolidationErrorPipe } from './components/consolidation-error.pipe';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+import {SharedModule} from "../../../admin-gui/src/app/shared/shared.module";
+import {NgxPolygloatModule} from "ngx-polygloat";
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent, IdentitiesComponent, AddIdentityDialogComponent, WelcomePageComponent, FederationSelectComponent, IdentityTypeSelectionComponent, ConfirmationComponent, NewIdentityPageComponent, ConsolidatePageComponent, ConsolidationErrorPipe],
@@ -34,13 +30,14 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
+    SharedModule,
+    /*TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    }),
+    }),*/
     UiModule,
     UiMaterialModule,
     UiAlertsModule
