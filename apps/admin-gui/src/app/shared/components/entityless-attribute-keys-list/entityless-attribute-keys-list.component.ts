@@ -14,7 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotificatorService } from '../../../core/services/common/notificator.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from 'ngx-polygloat';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AttributeDefinition } from '@perun-web-apps/perun/openapi';
 import { AttributeValueComponent } from '@perun-web-apps/perun/components';

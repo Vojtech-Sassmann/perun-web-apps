@@ -8,7 +8,7 @@ import {
 import {
   DeleteResourceTagDialogComponent
 } from '../../../../../shared/components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateService} from 'ngx-polygloat';
 import {NotificatorService} from '../../../../../core/services/common/notificator.service';
 import { ResourcesManagerService, ResourceTag } from '@perun-web-apps/perun/openapi';
 

@@ -35,7 +35,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {SideMenuItemComponent} from './side-menu/side-menu-item/side-menu-item.component';
 import {MenuButtonsFieldComponent} from './components/menu-buttons-field/menu-buttons-field.component';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {CreateGroupDialogComponent} from './components/dialogs/create-group-dialog/create-group-dialog.component';
 import {InviteMemberDialogComponent} from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {UserFullNamePipe} from './pipes/user-full-name.pipe';
@@ -152,6 +151,7 @@ import { CreateResourceDialogComponent } from './components/dialogs/create-resou
 import { ExtSourceTypePipe } from './pipes/ext-source-type.pipe';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { PerunSharedComponentsModule } from '@perun-web-apps/perun/components';
+import { NgxPolygloatModule, TranslateService } from 'ngx-polygloat';
 
 @NgModule({
   imports: [
@@ -165,7 +165,6 @@ import { PerunSharedComponentsModule } from '@perun-web-apps/perun/components';
     MatIconModule,
     MatSidenavModule,
     MatExpansionModule,
-    TranslateModule.forChild({}),
     MatButtonModule,
     MatSortModule,
     MatTableModule,
@@ -197,7 +196,11 @@ import { PerunSharedComponentsModule } from '@perun-web-apps/perun/components';
     ScrollingModule,
     UiAlertsModule,
     MatBadgeModule,
-    PerunSharedComponentsModule
+    PerunSharedComponentsModule,
+    NgxPolygloatModule.forRoot({
+      //apiKey: "",
+      apiUrl: "https://cloud4.perun-aai.org"
+    }),
   ],
   exports: [
     PerunNavComponent,
@@ -210,7 +213,7 @@ import { PerunSharedComponentsModule } from '@perun-web-apps/perun/components';
     MatIconModule,
     SideMenuComponent,
     MatSidenavModule,
-    TranslateModule,
+    NgxPolygloatModule,
     MenuButtonsFieldComponent,
     MatSortModule,
     MatTableModule,
@@ -394,7 +397,7 @@ import { PerunSharedComponentsModule } from '@perun-web-apps/perun/components';
   ]
 })
 export class SharedModule {
-  constructor(private translate: TranslateService) {
-    translate.addLangs(['en', 'cs']);
+  constructor(private translateService: TranslateService) {
+
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NotificatorService } from '../../../../core/services/common/notificator.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from 'ngx-polygloat';
 import { ActionType, Service, ServicesManagerService } from '@perun-web-apps/perun/openapi';
 import { slideInOutLeft, slideInOutRight, switchAnimation } from '../../../animations/Animations';
 import { AttributeDefinition, AttributeRights, AttributesManagerService } from '@perun-web-apps/perun/openapi';

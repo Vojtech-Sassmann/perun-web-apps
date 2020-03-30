@@ -6,6 +6,7 @@ import {SideMenuItemService} from './side-menu-item.service';
 import {GuiAuthResolver} from '@perun-web-apps/perun/services';
 import {rollInOut} from '../animations/Animations';
 import { StoreService } from '@perun-web-apps/perun/services';
+import { TranslateService } from 'ngx-polygloat';
 
 @Component({
   selector: 'app-side-menu',
@@ -21,6 +22,7 @@ export class SideMenuComponent implements OnInit {
     private sideMenuService: SideMenuService,
     private sideMenuItemService: SideMenuItemService,
     public authResolver: GuiAuthResolver,
+    private translateService: TranslateService,
     private store: StoreService
   ) { }
 
@@ -30,7 +32,7 @@ export class SideMenuComponent implements OnInit {
   userItems: SideMenuItem[] = [];
 
   accessItem = this.sideMenuItemService.getAccessManagementItem();
-  adminItem = this.sideMenuItemService.getAdminItem();
+  adminItem = null;
   facilityItem = this.sideMenuItemService.getFacilitiesManagementItem();
   userItem = this.sideMenuItemService.getUserItem(this.store.getPerunPrincipal().user);
 
@@ -43,6 +45,7 @@ export class SideMenuComponent implements OnInit {
   backgroundColor = this.store.get('theme', 'sidemenu_bg_color');
 
   ngOnInit(): void {
+    this.translateService.get("").subscribe(() => this.sideMenuItemService.getAdminItem());
 
     this.mobileView = window.innerWidth <= AppComponent.minWidth;
     if (this.mobileView) {

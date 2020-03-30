@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SharedModule} from './shared/shared.module';
 import { MainMenuPageComponent } from './main-menu-page/main-menu-page.component';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
@@ -31,9 +29,9 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
   multi: true
 };
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+// export function HttpLoaderFactory(http: HttpClient) {
+//   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+// }
 
 // export function ApiConfigurationFactory(store: StoreService): ApiConfiguration {
 //   return {
@@ -69,14 +67,7 @@ const loadConfigs = (appConfig: AdminGuiConfigService) => {
     AppRoutingModule,
     MatIconModule,
     GeneralModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    ApiModule
+    ApiModule,
   ],
   providers: [
     AdminGuiConfigService,
@@ -114,10 +105,10 @@ export class AppModule {
 
   constructor(
     private customIconService: CustomIconService,
-    private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+    // this.translate.setLang('en');
+    // this.translate.setDefaultLang('en');
+    // this.translate.use('en');
     this.customIconService.registerPerunRefreshIcon();
   }
 }

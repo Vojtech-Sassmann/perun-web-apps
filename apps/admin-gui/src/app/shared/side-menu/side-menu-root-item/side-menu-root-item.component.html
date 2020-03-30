@@ -1,5 +1,6 @@
 <div class="entity-menu-item">
   <div class="entity-menu-item-header"
+       *ngIf="item !== null"
        matRipple
        [matRippleColor]="'rgba(255, 255, 255, 0.1)'"
        [ngStyle]="{'background': item.backgroundColorCss}"
@@ -16,7 +17,7 @@
   </div>
 
   <div [@openClose]="expanded ? 'open' : 'closed'">
-    <div class="side-entity-menu {{item.linksClass}}" [ngStyle]="{'background': linkBgColor}">
+    <div class="side-entity-menu {{item.linksClass}}" [ngStyle]="{'background': linkBgColor}" *ngIf="item !== null">
       <div *ngFor="let link of item.links">
         <a (click)="navigate(link.url)"
            matRipple

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificatorService } from '../../../../core/services/common/notificator.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from 'ngx-polygloat';
 import { ExtSource, ExtSourcesManagerService } from '@perun-web-apps/perun/openapi';
 
 @Component({

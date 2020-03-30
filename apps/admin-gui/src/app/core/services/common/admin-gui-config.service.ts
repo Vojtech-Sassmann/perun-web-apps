@@ -5,7 +5,7 @@ import {
 import { AppConfigService, ColorConfig, EntityColorConfig } from '@perun-web-apps/config';
 import { AuthzResolverService } from '@perun-web-apps/perun/openapi';
 import { MatDialog } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from 'ngx-polygloat';
 import { ServerDownDialogComponent } from '@perun-web-apps/general';
 
 

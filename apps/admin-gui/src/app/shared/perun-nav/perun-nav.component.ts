@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShowNotificationHistoryDialogComponent } from '../components/dialogs/show-notification-history-dialog/show-notification-history-dialog.component';
 import { NotificationStorageService } from '../../core/services/common/notification-storage.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from 'ngx-polygloat';
 import { NotificatorService } from '../../core/services/common/notificator.service';
 
 @Component({
