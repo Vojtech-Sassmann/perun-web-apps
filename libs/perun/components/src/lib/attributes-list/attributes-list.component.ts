@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {AttributeValueComponent} from './attribute-value/attribute-value.component';
 import { Attribute } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'perun-web-apps-attributes-list',
@@ -46,6 +47,7 @@ export class AttributesListComponent implements OnChanges, AfterViewInit {
   filterValue = '';
 
   exporting = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Attribute>(this.attributes);

@@ -4,6 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-ext-sources-list',
@@ -39,6 +40,7 @@ export class ExtSourcesListComponent implements AfterViewInit, OnChanges {
   displayedColumns: string[] = ['select', 'id', 'name', 'type'];
   dataSource: MatTableDataSource<ExtSource>;
   exporting = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngAfterViewInit() {
     this.setDataSource();

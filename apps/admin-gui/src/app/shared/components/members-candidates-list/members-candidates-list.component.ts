@@ -9,7 +9,7 @@ import {
   getCandidateEmail,
   getExtSourceNameOrOrganizationColumn,
   parseUserEmail,
-  parseVo, parseName
+  parseVo, parseName, TABLE_ITEMS_COUNT_OPTIONS
 } from '@perun-web-apps/perun/utils';
 
 @Component({
@@ -44,6 +44,7 @@ export class MembersCandidatesListComponent implements OnChanges, AfterViewInit 
   dataSource: MatTableDataSource<MemberCandidate>;
 
   exporting = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   setDataSource() {
     if (!!this.dataSource) {

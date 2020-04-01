@@ -196,7 +196,7 @@ import { EditAttributeDialogComponent } from './components/dialogs/edit-attribut
     ScrollingModule,
     UiAlertsModule,
     MatBadgeModule,
-    PerunSharedComponentsModule
+    PerunSharedComponentsModule,
   ],
   exports: [
     PerunNavComponent,

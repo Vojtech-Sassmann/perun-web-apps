@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { RichUser } from '@perun-web-apps/perun/openapi';
-import { parseFullName, parseUserEmail, parseVo } from '@perun-web-apps/perun/utils';
+import { parseFullName, parseUserEmail, parseVo, TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-users-list',
@@ -42,6 +42,7 @@ export class UsersListComponent implements OnChanges {
   dataSource: MatTableDataSource<RichUser>;
 
   exporting = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   setDataSource() {
     if (!!this.dataSource) {

@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RichFacility } from '@perun-web-apps/perun/openapi';
-import { parseTechnicalOwnersNames } from '@perun-web-apps/perun/utils';
+import { parseTechnicalOwnersNames, TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-facility-select-table',
@@ -35,6 +35,7 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
 
   displayedColumns: string[] = ['id', 'recent', 'name', 'description', 'technicalOwners'];
   dataSource: MatTableDataSource<RichFacility>;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<RichFacility>(this.facilities);

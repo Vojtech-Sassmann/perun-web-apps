@@ -19,6 +19,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { AttributeDefinition } from '@perun-web-apps/perun/openapi';
 import { AttributeValueComponent } from '@perun-web-apps/perun/components';
 import { Attribute, AttributesManagerService } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 export interface EntitylessAttributeKeysListData {
   attDef: AttributeDefinition;
@@ -66,6 +67,7 @@ export class EntitylessAttributeKeysListComponent implements OnChanges, OnInit {
   selection = new SelectionModel<[string, Attribute]>(true, []);
 
   isAddButtonDisabled = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit();

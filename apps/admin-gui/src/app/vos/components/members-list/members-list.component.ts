@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import {SelectionModel} from '@angular/cdk/collections';
 import { RichMember } from '@perun-web-apps/perun/openapi';
-import { parseEmail, parseFullName } from '@perun-web-apps/perun/utils';
+import { parseEmail, parseFullName, TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 import { ChangeMemberStatusDialogComponent } from '../../../shared/components/dialogs/change-member-status-dialog/change-member-status-dialog.component';
 
 @Component({
@@ -54,6 +54,7 @@ export class MembersListComponent implements OnChanges, AfterViewInit {
 
   displayedColumns: string[] = ['checkbox', 'id', 'fullName', 'status', 'groupStatus', 'email'];
   dataSource: MatTableDataSource<RichMember>;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   setDataSource() {
     this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));

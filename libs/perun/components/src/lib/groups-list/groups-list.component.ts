@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { Group } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'perun-web-apps-groups-list',
@@ -55,6 +56,7 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   exporting = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.hasMembersGroup = this.checkIfHasMembersGroup();

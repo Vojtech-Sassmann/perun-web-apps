@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {ActivatedRoute} from '@angular/router';
 import { Group } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-member-group-list',
@@ -41,6 +42,7 @@ export class MemberGroupListComponent implements OnInit, OnChanges, AfterViewIni
   dataSource: MatTableDataSource<Group>;
 
   exporting = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
 
   ngOnChanges(changes: SimpleChanges) {

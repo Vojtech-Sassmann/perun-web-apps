@@ -6,6 +6,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {NotificatorService} from '../../../core/services/common/notificator.service';
 import {TranslateService} from '@ngx-translate/core';
 import { ResourcesManagerService, ResourceTag } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-resources-tags-list',
@@ -41,6 +42,7 @@ export class ResourcesTagsListComponent implements OnChanges, AfterViewInit {
 
   isChanging = new SelectionModel<ResourceTag>(true, []);
   exporting = false;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<ResourceTag>(this.resourceTags);

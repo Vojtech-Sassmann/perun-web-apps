@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RichResource } from '@perun-web-apps/perun/openapi';
 import { SelectionModel } from '@angular/cdk/collections';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'perun-web-apps-resources-list',
@@ -39,6 +40,7 @@ export class ResourcesListComponent implements AfterViewInit, OnChanges {
   filterValue: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));

@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {Router} from '@angular/router';
 import { Application, Group } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-applications-list',
@@ -37,6 +38,7 @@ export class ApplicationsListComponent implements OnChanges, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   private sort: MatSort;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngAfterViewInit(): void {
     this.setDataSource();

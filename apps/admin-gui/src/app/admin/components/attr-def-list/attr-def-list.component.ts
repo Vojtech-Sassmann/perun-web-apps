@@ -15,6 +15,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { AttributeDefinition } from '@perun-web-apps/perun/openapi';
 import { EditAttributeDefinitionDialogComponent } from '../../../shared/components/dialogs/edit-attribute-definition-dialog/edit-attribute-definition-dialog.component';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-attr-def-list',
@@ -50,6 +51,7 @@ export class AttrDefListComponent implements OnChanges, AfterViewInit {
   dataSource: MatTableDataSource<AttributeDefinition>;
 
   private sort: MatSort;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<AttributeDefinition>(this.definitions);

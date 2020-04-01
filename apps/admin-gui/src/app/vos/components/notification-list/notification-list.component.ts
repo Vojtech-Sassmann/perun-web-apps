@@ -10,6 +10,7 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {NotificatorService} from '../../../core/services/common/notificator.service';
 import { ApplicationMail, RegistrarManagerService } from '@perun-web-apps/perun/openapi';
+import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
 @Component({
   selector: 'app-notification-list',
@@ -51,6 +52,7 @@ export class NotificationListComponent implements OnChanges, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   private sort: MatSort;
+  pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
 
   ngOnChanges() {
     this.dataSource = new MatTableDataSource<ApplicationMail>(this.applicationMails);
