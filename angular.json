@@ -351,6 +351,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "preserveSymlinks": true,
             "outputPath": "dist/apps/admin-gui",
             "index": "apps/admin-gui/src/index.html",
             "main": "apps/admin-gui/src/main.ts",
