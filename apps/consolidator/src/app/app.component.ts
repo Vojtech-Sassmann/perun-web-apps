@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 
 
 export interface I18n {
@@ -24,14 +23,6 @@ export interface WayfGroup {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  constructor(
-    translate: TranslateService
-  ) {
-    translate.setDefaultLang('en');
-
-    translate.use('en');
-  }
 
   wayfGroups: WayfGroup[] =  [
     {

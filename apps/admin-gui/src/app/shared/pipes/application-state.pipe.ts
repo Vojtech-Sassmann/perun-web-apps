@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateService} from 'ngx-polygloat';
 
 @Pipe({
@@ -7,13 +7,24 @@ import {TranslateService} from 'ngx-polygloat';
 })
 export class ApplicationStatePipe implements PipeTransform {
 
+
   private returnData = '';
+  private lastValue = undefined;
 
   constructor(
     private translate: TranslateService
-  ) { }
+  ) {
+  }
 
   transform(value: any, args?: any): any {
+    if (!value) {
+      return value;
+    }
+
+    if (value == this.lastValue) {
+      return this.returnData;
+    }
+
     switch (value) {
       case 'APPROVED': {
         this.translate.get('VO_DETAIL.APPLICATION.STATE.APPROVED').subscribe(response => {
@@ -44,6 +55,9 @@ export class ApplicationStatePipe implements PipeTransform {
         break;
       }
     }
+
+    this.lastValue = value;
+
     return this.returnData;
   }
 

@@ -1,15 +1,15 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, ViewChild} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {
   AddEditNotificationDialogComponent
 } from '../../../shared/components/dialogs/add-edit-notification-dialog/add-edit-notification-dialog.component';
 import {TranslateService} from 'ngx-polygloat';
 import {NotificatorService} from '../../../core/services/common/notificator.service';
-import { ApplicationMail, RegistrarManagerService } from '@perun-web-apps/perun/openapi';
+import {ApplicationMail, RegistrarManagerService} from '@perun-web-apps/perun/openapi';
 
 @Component({
   selector: 'app-notification-list',
@@ -43,7 +43,7 @@ export class NotificationListComponent implements OnChanges, AfterViewInit {
   @Output()
   selectionChange = new EventEmitter<SelectionModel<ApplicationMail>>();
 
-  @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
+  @ViewChild(MatSort, {static: true}) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
   }
@@ -83,11 +83,11 @@ export class NotificationListComponent implements OnChanges, AfterViewInit {
 
   changeSending(applicationMail: ApplicationMail) {
     if (applicationMail.send) {
-      this.registrarService.setSendingEnabled( { mails: [applicationMail], enabled: false }).subscribe( () => {
+      this.registrarService.setSendingEnabled({mails: [applicationMail], enabled: false}).subscribe(() => {
         applicationMail.send = false;
       });
     } else {
-      this.registrarService.setSendingEnabled({ mails: [applicationMail], enabled: true}).subscribe( () => {
+      this.registrarService.setSendingEnabled({mails: [applicationMail], enabled: true}).subscribe(() => {
         applicationMail.send = true;
       });
     }
@@ -99,9 +99,9 @@ export class NotificationListComponent implements OnChanges, AfterViewInit {
       height: '700px',
       data: {voId: this.voId, groupId: this.groupId, createMailNotification: false, applicationMail: applicationMail}
     });
-    dialog.afterClosed().subscribe( success => {
+    dialog.afterClosed().subscribe(success => {
       if (success) {
-        this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.EDIT_SUCCESS').subscribe( text => {
+        this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.EDIT_SUCCESS').subscribe(text => {
           this.notificator.showSuccess(text);
         });
         this.selection.clear();
@@ -112,25 +112,16 @@ export class NotificationListComponent implements OnChanges, AfterViewInit {
   }
 
   getMailType(applicationMail: ApplicationMail): string {
-    let value = '';
-    // @ts-ignore
-    if (applicationMail.mailType === undefined || applicationMail.mailType === null || applicationMail.mailType === '') {
-      value = '';
-    } else {
-      this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.MAIL_TYPE_' + applicationMail.mailType).subscribe( text => {
-        value = text;
-      });
-    }
-    return value;
+    return !!applicationMail.mailType ? this.translate.instant('VO_DETAIL.SETTINGS.NOTIFICATIONS.MAIL_TYPE_' + applicationMail.mailType) : '';
   }
 
   update() {
     if (this.groupId) {
-      this.registrarService.getApplicationMailsForGroup(this.groupId).subscribe( mails => {
+      this.registrarService.getApplicationMailsForGroup(this.groupId).subscribe(mails => {
         this.updateTable(mails);
       });
     } else {
-      this.registrarService.getApplicationMailsForVo(this.voId).subscribe( mails => {
+      this.registrarService.getApplicationMailsForVo(this.voId).subscribe(mails => {
         this.updateTable(mails);
       });
     }
