@@ -1,7 +1,16 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { ExtSource } from '@perun-web-apps/perun/openapi';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
@@ -26,6 +35,9 @@ export class ExtSourcesListComponent implements AfterViewInit, OnChanges {
   hideColumns: string[] = [];
   @Input()
   pageSize = 5;
+
+  @Output()
+  page = new EventEmitter<PageEvent>();
 
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
@@ -79,4 +91,7 @@ export class ExtSourcesListComponent implements AfterViewInit, OnChanges {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
+  pageChanged(event: PageEvent) {
+    this.page.emit(event);
+  }
 }

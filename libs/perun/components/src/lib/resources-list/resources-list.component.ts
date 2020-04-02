@@ -1,5 +1,14 @@
-import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RichResource } from '@perun-web-apps/perun/openapi';
@@ -22,22 +31,25 @@ export class ResourcesListComponent implements AfterViewInit, OnChanges {
 
   @Input()
   resources: RichResource[] = [];
-
-  private sort: MatSort;
-
   @Input()
   hideColumns: string[] = [];
+  @Input()
+  selection = new SelectionModel<RichResource>(true, []);
+  @Input()
+  filterValue: string;
+  @Input()
+  pageSize = 10;
+
+  @Output()
+  page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
+
+  private sort: MatSort;
 
   displayedColumns: string[] = ['select', 'id', 'name', 'facility', 'tags', 'description'];
   dataSource: MatTableDataSource<RichResource>;
 
   exporting = false;
 
-  @Input()
-  selection = new SelectionModel<RichResource>(true, []);
-
-  @Input()
-  filterValue: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;

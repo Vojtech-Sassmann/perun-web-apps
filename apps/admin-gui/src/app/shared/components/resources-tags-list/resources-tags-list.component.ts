@@ -1,5 +1,14 @@
-import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -21,9 +30,15 @@ export class ResourcesTagsListComponent implements OnChanges, AfterViewInit {
 
   @Input()
   resourceTags: ResourceTag[] = [];
-
   @Input()
   filterValue: string;
+  @Input()
+  selection = new SelectionModel<ResourceTag>(true, []);
+  @Input()
+  pageSize = 10;
+
+  @Output()
+  page = new EventEmitter<PageEvent>();
 
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
@@ -37,8 +52,6 @@ export class ResourcesTagsListComponent implements OnChanges, AfterViewInit {
   displayedColumns: string[] = ['select', 'id', 'name', 'edit'];
   dataSource: MatTableDataSource<ResourceTag>;
 
-  @Input()
-  selection = new SelectionModel<ResourceTag>(true, []);
 
   isChanging = new SelectionModel<ResourceTag>(true, []);
   exporting = false;
@@ -93,4 +106,8 @@ export class ResourcesTagsListComponent implements OnChanges, AfterViewInit {
     this.isChanging.select(row);
   }
 
+  pageChanged(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.page.emit(event);
+  }
 }

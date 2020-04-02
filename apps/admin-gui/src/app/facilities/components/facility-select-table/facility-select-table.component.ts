@@ -1,5 +1,14 @@
-import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RichFacility } from '@perun-web-apps/perun/openapi';
@@ -21,6 +30,12 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
 
   @Input()
   filterValue: string;
+
+  @Input()
+  pageSize = 10;
+
+  @Output()
+  page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   exporting = false;
 
@@ -65,5 +80,9 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
         return parseTechnicalOwnersNames(data.facilityOwners).toLowerCase().indexOf(lowerCaseFilter) !== -1;
       });
     }
+  }
+
+  pageChanged(event: PageEvent) {
+    this.page.emit(event);
   }
 }

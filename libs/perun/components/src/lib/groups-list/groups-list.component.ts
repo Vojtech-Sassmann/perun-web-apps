@@ -2,7 +2,7 @@ import {AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, Simple
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Group } from '@perun-web-apps/perun/openapi';
 import { TABLE_ITEMS_COUNT_OPTIONS } from '@perun-web-apps/perun/utils';
 
@@ -49,6 +49,9 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   @Input()
   disableHeadCheckbox: boolean;
+
+  @Output()
+  page = new EventEmitter<PageEvent>();
 
   displayedColumns: string[] = ['select', 'id', 'vo', 'name', 'description', 'menu'];
   dataSource: MatTableDataSource<Group>;
@@ -118,6 +121,10 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   onMoveGroup(group: Group) {
     this.moveGroup.emit(group);
+  }
+
+  pageChanged(event: PageEvent) {
+    this.page.emit(event);
   }
 }
 

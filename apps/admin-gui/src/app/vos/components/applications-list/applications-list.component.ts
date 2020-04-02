@@ -1,5 +1,14 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {Router} from '@angular/router';
@@ -31,6 +40,12 @@ export class ApplicationsListComponent implements OnChanges, AfterViewInit {
 
   @Input()
   filterValue: string;
+
+  @Input()
+  pageSize = 10;
+
+  @Output()
+  page = new EventEmitter<PageEvent>();
 
   dataSource: MatTableDataSource<Application>;
 
@@ -104,5 +119,9 @@ export class ApplicationsListComponent implements OnChanges, AfterViewInit {
     } else {
       this.router.navigate(['/organizations', application.vo.id, 'applications', application.id]);
     }
+  }
+
+  pageChanged(event: PageEvent) {
+    this.page.emit(event);
   }
 }

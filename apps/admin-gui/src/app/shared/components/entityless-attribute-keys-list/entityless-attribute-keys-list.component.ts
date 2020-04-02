@@ -10,7 +10,7 @@ import {
   ViewChild, ViewChildren
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotificatorService } from '../../../core/services/common/notificator.service';
@@ -50,7 +50,11 @@ export class EntitylessAttributeKeysListComponent implements OnChanges, OnInit {
 
   @Input()
   attDef: AttributeDefinition;
+  @Input()
+  pageSize = 10;
 
+  @Output()
+  page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
   @Output()
   switchView: EventEmitter<any> = new EventEmitter();
 
@@ -68,6 +72,7 @@ export class EntitylessAttributeKeysListComponent implements OnChanges, OnInit {
 
   isAddButtonDisabled = false;
   pageSizeOptions = TABLE_ITEMS_COUNT_OPTIONS;
+
 
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit();
@@ -173,4 +178,7 @@ export class EntitylessAttributeKeysListComponent implements OnChanges, OnInit {
     }
   }
 
+  pageChanged(event: PageEvent) {
+    this.page.emit(event);
+  }
 }
