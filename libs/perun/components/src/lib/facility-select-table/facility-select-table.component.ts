@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  AfterViewInit, ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -25,9 +25,12 @@ import { GuiAuthResolver } from '@perun-web-apps/perun/services';
   templateUrl: './facility-select-table.component.html',
   styleUrls: ['./facility-select-table.component.scss']
 })
-export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
+export class FacilitySelectTableComponent implements OnChanges {
 
-  constructor(private authResolver: GuiAuthResolver) { }
+  constructor(
+    private authResolver: GuiAuthResolver,
+    private cd: ChangeDetectorRef
+  ) { }
 
   @Input()
   facilities: EnrichedFacility[];
@@ -60,9 +63,14 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
     this.setDataSource();
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) set matPaginator(pg: MatPaginator) {
+    this.paginator = pg;
+    this.setDataSource();
+    this.cd.detectChanges();
+  }
 
   private sort: MatSort;
+  private paginator: MatPaginator;
 
   dataSource: MatTableDataSource<EnrichedFacility>;
   disableRouting: boolean;
@@ -71,13 +79,12 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
     if (!this.authResolver.isPerunAdmin()){
       this.displayedColumns = this.displayedColumns.filter(column => column !== 'id');
     }
-    this.dataSource = new MatTableDataSource<EnrichedFacility>(this.facilities);
     this.setDataSource();
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit(): void {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 
   getDataForColumn(data: EnrichedFacility, column: string, otherThis: FacilitySelectTableComponent): string{
     switch (column) {
@@ -106,7 +113,11 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
   }
 
   setDataSource() {
-    if (!!this.dataSource) {
+    if (!this.paginator) {
+      return;
+    }
+    if (!this.dataSource) {
+      this.dataSource = new MatTableDataSource<EnrichedFacility>();
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = (data: EnrichedFacility, filter: string) => {
@@ -115,8 +126,9 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
       this.dataSource.sortData = (data: EnrichedFacility[], sort: MatSort) => {
         return customDataSourceSort(data, sort, this.getDataForColumn, this);
       };
-      this.dataSource.filter = this.filterValue;
     }
+    this.dataSource.filter = this.filterValue;
+    this.dataSource.data = this.facilities;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

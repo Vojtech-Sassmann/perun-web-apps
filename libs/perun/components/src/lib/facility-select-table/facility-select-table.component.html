@@ -1,4 +1,4 @@
-<div class="card mt-3" [class.hide-table]="exporting" [hidden]="dataSource.filteredData.length === 0">
+<div class="card mt-3" [class.hide-table]="exporting" [hidden]="!dataSource || dataSource.filteredData.length === 0">
   <div class="card-body">
     <perun-web-apps-table-options (exportEnd)="exporting = false" (exportStart)="exporting = true" [exporter]="exporter"></perun-web-apps-table-options>
     <div class="overflow-auto">
@@ -93,6 +93,6 @@
 
 <mat-spinner *ngIf="exporting" class="ml-auto mr-auto"></mat-spinner>
 
-<app-alert *ngIf="dataSource.filteredData.length === 0" alert_type="warn">
+<app-alert *ngIf="!!dataSource && dataSource.filteredData.length === 0" alert_type="warn">
   {{'SHARED_LIB.UI.ALERTS.NO_FILTER_RESULTS_ALERT' | translate}}
 </app-alert>
